@@ -50,8 +50,9 @@ html, body {
     height: 100%;
     background: rgba(0, 0, 0, 0.9);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Гарантирует вертикальную структуру, если что */
+    justify-content: center; /* Центр по вертикали */
+    align-items: center; /* Центр по горизонтали */
     z-index: 999;
     cursor: pointer;
     transition: opacity 0.8s ease;
@@ -59,12 +60,20 @@ html, body {
 
 .overlay-content {
     display: flex;
+    flex-direction: row; /* Текст и сердце в одну строку */
+    justify-content: center; /* Жестко по центру */
     align-items: center;
-    gap: 15px;
+    gap: 15px; /* Расстояние между текстом и сердцем */
+    width: 100%; /* На всю ширину, чтобы justify-content сработал */
+
     color: #fff;
     font-family: sans-serif;
-    font-size: 28px;
+    /* Делаем шрифт чуть меньше для мобилок, чтобы влезало в одну строку */
+    font-size: clamp(18px, 5vw, 28px);
     font-weight: 300;
+    text-align: center;
+    /* Запрещаем перенос строк, чтобы "сердце" не падало вниз отдельно */
+    white-space: nowrap;
 }
 
 .heart {
